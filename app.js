@@ -1,10 +1,12 @@
+// import * from './secret.js'
 var http = require('http');
+let {weather_APIKEY} = require('./secret');
 
 const TelegramBot = require('node-telegram-bot-api');
-const token = '2123064625:AAHi01l4sA-MqrK0oky5MANE1jUaog9xP7E';
+let {telegram_TOKEN} = require('./secret');
 
 // Create a bot that uses 'polling' to fetch new updates
-const bot = new TelegramBot(token, {
+const bot = new TelegramBot(telegram_TOKEN, {
     polling: true
 });
 
@@ -24,11 +26,6 @@ bot.on('message', (message) => {
         http.request(cityOptions, callback).end();
     }
 })
-
-let weather_APIKEY = '13a49ece254b7f95e3e56d715eddedbe';
-var city;
-
-
 
 callback = function (response) {
     var str = '';
